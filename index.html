@@ -37,10 +37,10 @@
             beforeSubmit: function() {
                 // Check if WebForm exists to avoid errors
                 if (typeof WebForm !== 'undefined') {
-                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_lead_source]", value: window.localStorage.getItem("_fm_ls") || ""}).appendTo(".fs-webform-container form");
-                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_lead_medium]", value: window.localStorage.getItem("_fm_lm") || ""}).appendTo(".fs-webform-container form");
-                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_lead_campaign]", value: window.localStorage.getItem("_fm_lc") || ""}).appendTo(".fs-webform-container form");
-                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_google_click_id]", value: window.localStorage.getItem("_fm_gcid") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "contact[custom_field][cf_lead_source]", value: window.localStorage.getItem("_fm_ls") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "deal[custom_field][cf_lead_medium]", value: window.localStorage.getItem("_fm_lm") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "contact[custom_field][cf_lead_campaign]", value: window.localStorage.getItem("_fm_lc") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "deal[custom_field][cf_google_click_id]", value: window.localStorage.getItem("_fm_gcid") || ""}).appendTo(".fs-webform-container form");
                     WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_facebook_click_id]", value: window.localStorage.getItem("_fm_fbclid") || ""}).appendTo(".fs-webform-container form");
                     WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_ga_client_id]", value: window.localStorage.getItem("_fm_gaid") || ""}).appendTo(".fs-webform-container form");
                     
