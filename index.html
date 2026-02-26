@@ -5,20 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Document Title</title>
+    <title>Freshworks Form Test</title>
 
-    <script
-src='//in.fw-cdn.com/31719983/876676.js'
-chat='true'>
-</script>
+    <script src='//in.fw-cdn.com/31719983/876676.js' chat='true'></script>
     
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Simple styling to make sure the form is visible */
+        body { font-family: sans-serif; padding: 20px; }
+        .fs-webform-container { margin-top: 20px; border: 1px solid #ccc; padding: 10px; }
+    </style>
 </head>
 <body>
 
     <h1>Hello, World!</h1>
+    <p>Submit the form below to test the hidden fields.</p>
+
+    <script>
+        console.log("Setting test data in localStorage...");
+        localStorage.setItem("_fm_ls", "Test_Source");
+        localStorage.setItem("_fm_lm", "Test_Medium");
+        localStorage.setItem("_fm_lc", "Test_Campaign");
+        localStorage.setItem("_fm_gcid", "Test_GoogleClickID");
+        localStorage.setItem("_fm_fbclid", "Test_FacebookClickID");
+        localStorage.setItem("_fm_gaid", "Test_GAClientID");
+    </script>
+
+    <script type="text/javascript">
+        var WebFormEvent = {
+            beforeSubmit: function() {
+                // Check if WebForm exists to avoid errors
+                if (typeof WebForm !== 'undefined') {
+                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_lead_source]", value: window.localStorage.getItem("_fm_ls") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_lead_medium]", value: window.localStorage.getItem("_fm_lm") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_lead_campaign]", value: window.localStorage.getItem("_fm_lc") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_google_click_id]", value: window.localStorage.getItem("_fm_gcid") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_facebook_click_id]", value: window.localStorage.getItem("_fm_fbclid") || ""}).appendTo(".fs-webform-container form");
+                    WebForm.$("<input>").attr({type: "hidden", name: "sales_account[custom_field][cf_ga_client_id]", value: window.localStorage.getItem("_fm_gaid") || ""}).appendTo(".fs-webform-container form");
+                    
+                    console.log("Custom fields injected via WebFormEvent.");
+                } else {
+                    console.error("WebForm object is not defined.");
+                }
+            }
+        };
+    </script>
 
     <script src="script.js"></script>
-  <script src='https://sachinanew.myfreshworks.com/crm/sales/web_forms/3abfb01c850e065c45dcd5bc053c32840e4c5764e7a769d10037d642916881c2/form.js' crossorigin='anonymous' id='fs_3abfb01c850e065c45dcd5bc053c32840e4c5764e7a769d10037d642916881c2'></script>
+
+    <script src='https://sachinanew.myfreshworks.com/crm/sales/web_forms/3abfb01c850e065c45dcd5bc053c32840e4c5764e7a769d10037d642916881c2/form.js' crossorigin='anonymous' id='fs_3abfb01c850e065c45dcd5bc053c32840e4c5764e7a769d10037d642916881c2'></script>
+
 </body>
 </html>
